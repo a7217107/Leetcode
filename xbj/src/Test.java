@@ -1,10 +1,39 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Test {
 
+    public class Node{
+        public int getVal() {
+            return val;
+        }
+
+        public void setVal(int val) {
+            this.val = val;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
+        }
+
+        private int val;
+        private Node next;
+    }
     public static void main(String[] args) {
         Test t = new Test();
         System.out.println(t.maximalSquare(new char[][]{{'0', '1'}, {'1', '0'}}));
     }
 
+    private Node nodeSub(Node node1,Node node2){
+        if(node1 == null)return node2;
+        if(node2 == null)return node1;
+
+    }
 
     public int maximalSquare(char[][] matrix) {
         if (matrix == null) return 0;

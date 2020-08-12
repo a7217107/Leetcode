@@ -26,8 +26,10 @@ public class Leetcode75 {
         int right = nums.length - 1;
         int zeroIndex = left;
         int TwoIndex = right;
-        while (left <= right){
-
+        while (left < right){
+            if(nums[left] == 0){
+                if()
+            }
         }
     }
 }
