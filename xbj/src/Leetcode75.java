@@ -21,14 +21,31 @@
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Leetcode75 {
+    public static void main(String[] args) {
+        new Leetcode75().sortColors(new int[]{2,0,2,1,1,0});
+    }
     public void sortColors(int[] nums) {
         int left = 0;
         int right = nums.length - 1;
-        int zeroIndex = left;
-        int TwoIndex = right;
-        while (left < right){
-            if(nums[left] == 0){
-                if()
+
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i] == 0){
+                if(i > left) {
+                    int t = nums[i];
+                    nums[i] = nums[left];
+                    nums[left] = t;
+                    i--;
+                }
+                left++;
+            }
+            if(nums[i] == 2){
+                if(i < right){
+                    int t = nums[i];
+                    nums[i] = nums[right];
+                    nums[right] = t;
+                    i--;
+                }
+                right--;
             }
         }
     }

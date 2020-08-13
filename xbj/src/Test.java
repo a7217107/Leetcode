@@ -32,7 +32,7 @@ public class Test {
     private Node nodeSub(Node node1,Node node2){
         if(node1 == null)return node2;
         if(node2 == null)return node1;
-
+        return null;
     }
 
     public int maximalSquare(char[][] matrix) {
