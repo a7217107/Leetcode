@@ -1,3 +1,5 @@
+import java.util.Map;
+
 /**
  * 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
  * <p>
@@ -17,36 +19,34 @@
 public class Leetcode42 {
 
     public static void main(String[] args) {
-        new Leetcode42().trap(new int[]{3, 0, 2, 0, 1});
+
+        System.out.println(new Leetcode42().trap(new int[]{4,2,0,3,2,5}));
     }
 
 
     public int trap(int[] height) {
+        if(height == null || height.length == 0)return 0;
         int num = 0;
-//        int left = 0;
-//        int right = 0;
-//        for (int i = 0; i < height.length; i++) {
-//            int block = 0;
-//            int length = 0;
-//            if (left == 0 && height[i] == 0) continue;
-//            while (i < height.length && left <= height[i]) {
-//                left = height[i];
-//                i++;
-//            }
-//            while (i + 1 < height.length && height[i] >= height[i + 1]) {
-//                length++;
-//                block += height[i];
-//                i++;
-//            }
-//            while (i + 1 < height.length && height[i] < height[i + 1] && height[i + 1] < left) {
-//                length++;
-//                block += height[i];
-//                i++;
-//            }
-//            right = height[i]
-//            num += length * minHeight - block;
-//            minHeight = height[i - 1];
-//        }
+        int leftIndex = 0;
+        int rightIndex = height.length - 1;
+        int leftValue = height[leftIndex];
+        int rightValue = height[rightIndex];
+        while (leftIndex < rightIndex) {
+            while (leftValue >= height[rightIndex] && rightIndex > leftIndex){
+                rightValue = Math.max(height[rightIndex],rightValue);
+                num+=rightValue - height[rightIndex];
+                rightIndex--;
+                rightValue = Math.max(height[rightIndex],rightValue);
+            }
+
+            while (rightValue >=height[leftIndex] && leftIndex < rightIndex){
+                leftValue = Math.max(height[leftIndex],leftValue);
+                num+=leftValue - height[leftIndex];
+                leftIndex++;
+                leftValue = Math.max(height[leftIndex],leftValue);
+            }
+        }
+
         return num;
     }
 }
